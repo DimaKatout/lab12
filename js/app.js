@@ -92,6 +92,42 @@ function render() {
     rightImage.setAttribute('title', rightShape.name);
 
     //iterationShapes.push(leftShape, middleShape, rightShape);
+    var ctx = document.getElementById('myChart').getContext('2d');
+    var myChart = new Chart(ctx, {
+        type: 'bar',
+
+        data: {
+            labels: [leftShape.name,middleShape.name,rightShape.name],
+            datasets: [{
+                label: '# of Clicks',
+                data: [leftShape.clicks,middleShape.clicks,rightShape.clicks],
+                backgroundColor: '#A67360',
+
+                borderColor: '#112A40',
+
+
+                borderWidth: 4
+            }, {
+                label: '# of Views',
+                data: [leftShape.views,middleShape.views,rightShape.views],
+                backgroundColor: '#112A40',
+
+                borderColor: '#A67360',
+
+
+                borderWidth: 3
+            }]
+        },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            }
+        }
+    });
 
 }
 render();
@@ -164,7 +200,7 @@ function handleClickOnShape(event) {
 
 
             render();
-            iterationShapes.push(leftShape, middleShape, rightShape);
+            //iterationShapes.push(leftShape, middleShape, rightShape);
 
 
 
@@ -220,3 +256,6 @@ function threeRandomNum(min, max) {
 
     return n;
 }
+
+////////////////////////////////////////////////////////////////////////////////////
+
