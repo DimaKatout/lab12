@@ -92,7 +92,7 @@ function render() {
     rightImage.setAttribute('title', rightShape.name);
 
     //iterationShapes.push(leftShape, middleShape, rightShape);
-    var ctx = document.getElementById('myChart').getContext('2d');
+   /* var ctx = document.getElementById('myChart').getContext('2d');
     var myChart = new Chart(ctx, {
         type: 'bar',
 
@@ -128,7 +128,7 @@ function render() {
             }
         }
     });
-
+*/
 }
 render();
 
@@ -225,6 +225,55 @@ function render2() {
 
 
     }
+    var productName=[];
+    var clicksonproud=[];
+    var viewprod=[];
+    for(var i=0;i<names.length;i++)
+    {
+        var nam=names[i].split('.')[0];
+        productName.push(nam);
+        var cli=shapes[i].clicks;
+        clicksonproud.push(cli);
+        var view=shapes[i].views;
+        viewprod.push(view);
+    }
+    var ctx = document.getElementById('myChart').getContext('2d');
+    var myChart = new Chart(ctx, {
+        type: 'bar',
+
+        data: {
+            labels: productName,
+            datasets: [{
+                label: '# of Clicks',
+                data: clicksonproud,
+                backgroundColor: 'palevioletred',
+
+                borderColor: 'gray',
+
+
+                borderWidth: 4
+            }, {
+                label: '# of Views',
+                data: viewprod,
+                backgroundColor: 'lightpurple',
+
+                borderColor: 'gray',
+
+
+                borderWidth: 3
+            }]
+        },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            }
+        }
+    });
+    
 
 
 }
